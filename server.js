@@ -1,7 +1,7 @@
 const express = require("express");
 // const bodyParser = require("body-parser"); /* deprecated */
 const cors = require("cors");
-
+const dbConfig =  require("./app/config/db.config.js")
 const app = express();
 
 var corsOptions = {
@@ -22,9 +22,8 @@ app.get("/", (req, res) => {
 });
 
 require("./app/routes/tutorial.routes.js")(app);
-
+const PORT = dbConfig.PORT;
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
